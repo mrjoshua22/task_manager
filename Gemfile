@@ -12,6 +12,8 @@ gem 'pg', '~> 1.1'
 gem 'puma', '~> 5.0'
 gem 'rails', '~> 6.1.6'
 gem 'sass-rails', '>= 6'
+gem 'simple_form'
+gem 'slim-rails'
 gem 'state_machines-activerecord', '< 0.9.0'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'webpacker', '~> 5.0'
