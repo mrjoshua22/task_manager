@@ -1,4 +1,4 @@
-FROM ruby:2.7.1-alpine
+FROM ruby:3.1-alpine3.21
 
 ARG RAILS_ROOT=/task_manager
 ARG PACKAGES="vim openssl-dev postgresql-dev build-base curl nodejs yarn \
