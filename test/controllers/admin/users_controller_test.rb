@@ -5,7 +5,7 @@ class Admin::UsersControllerTest < ActionController::TestCase
     admin = create(:admin)
     sign_in admin
   end
-  
+
   test 'should get index' do
     get :index
     assert_response :success
