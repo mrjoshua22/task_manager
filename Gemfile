@@ -20,6 +20,7 @@ gem 'slim-rails'
 gem 'state_machines-activerecord', '< 0.9.0'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'webpacker', '~> 5.0'
+gem 'webpacker-react'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
