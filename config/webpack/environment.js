@@ -1,5 +1,5 @@
-const { environment } = require('@rails/webpacker')
+const { environment } = require('@rails/webpacker');
 
-environment.modules.delete('nodeModules');
+environment.loaders.delete('nodeModules');
 
-module.exports = environment
+module.exports = environment;
