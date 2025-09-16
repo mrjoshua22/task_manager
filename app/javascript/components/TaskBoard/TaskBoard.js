@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import KanbanBoard from '@asseinfo/react-kanban';
 import { propOr } from 'ramda';
-
+import '@asseinfo/react-kanban/dist/styles.css';
 import Task from 'components/Task';
 import TasksRepository from 'repositories/TasksRepository';
 
