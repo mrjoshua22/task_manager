@@ -16,7 +16,7 @@ import TaskForm from 'forms/TaskForm';
 
 import useStyles from './useStyles';
 
-const AddPopup = ({ onClose, onCardCreate }) => {
+function AddPopup({ onClose, onCardCreate }) {
   const [task, changeTask] = useState(TaskForm.defaultAttributes());
   const [isSaving, setSaving] = useState(false);
   const [errors, setErrors] = useState({});
@@ -25,7 +25,7 @@ const AddPopup = ({ onClose, onCardCreate }) => {
 
     onCardCreate(task).catch((error) => {
       setSaving(false);
-      setErrors(error ||{});
+      setErrors(error || {});
 
       if (error instanceof Error) {
         alert(`Creation failed! Error: ${error.message}`);
@@ -33,53 +33,55 @@ const AddPopup = ({ onClose, onCardCreate }) => {
     });
   };
 
-  const handleChangeTextField = (fieldName) => (event) => changeTask({
-    ...task, [fieldName]: event.target.value });
+  const handleChangeTextField = (fieldName) => (event) =>
+    changeTask({
+      ...task,
+      [fieldName]: event.target.value,
+    });
   const styles = useStyles();
 
   return (
     <Modal className={styles.modal} open onClose={onClose}>
       <Card className={styles.root}>
         <CardHeader
-	  action={
-	    <IconButton onClick={onClose}>
-	      <CloseIcon />
-	    </IconButton>
-	  }
-	  title="Add New Task"
-	/>
-	<CardContent>
-	  <div className={styles.form}>
-	    <TextField
-	      error={has('name', errors)}
-	      helperText={errors.name}
-	      onChange={handleChangeTextField('name')}
-	      value={task.name}
-	      label="Name"
-	      required
-	      margin="dense"
-	    />
-	    <TextField
-	      error={has('description', errors)}
+          action={
+            <IconButton onClick={onClose}>
+              <CloseIcon />
+            </IconButton>
+          }
+          title="Add New Task"
+        />
+        <CardContent>
+          <div className={styles.form}>
+            <TextField
+              error={has('name', errors)}
+              helperText={errors.name}
+              onChange={handleChangeTextField('name')}
+              value={task.name}
+              label="Name"
+              required
+              margin="dense"
+            />
+            <TextField
+              error={has('description', errors)}
               helperText={errors.description}
               onChange={handleChangeTextField('description')}
               value={task.description}
               label="Description"
               required
               margin="dense"
-	    />
-	  </div>
-	</CardContent>
+            />
+          </div>
+        </CardContent>
         <CardActions className={styles.actions}>
-	  <Button disabled={isSaving} onClick={handleCreate}
-	    variant="contained" size="small" color="primary">
-	      Add
-	  </Button>
-	</CardActions>
+          <Button disabled={isSaving} onClick={handleCreate} variant="contained" size="small" color="primary">
+            Add
+          </Button>
+        </CardActions>
       </Card>
     </Modal>
   );
-};
+}
 
 AddPopup.propTypes = {
   onClose: PropTypes.func.isRequired,

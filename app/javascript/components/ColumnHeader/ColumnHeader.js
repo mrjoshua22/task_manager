@@ -6,7 +6,7 @@ import SystemUpdateAltIcon from '@material-ui/icons/SystemUpdateAlt';
 
 import useStyles from './useStyles';
 
-const ColumnHeader = ({ column, onLoadMore }) => {
+function ColumnHeader({ column, onLoadMore }) {
   const styles = useStyles();
 
   const {
@@ -17,7 +17,7 @@ const ColumnHeader = ({ column, onLoadMore }) => {
   } = column;
 
   const count = cards.length;
-  const canLoadMore = count < totalCount;  
+  const canLoadMore = count < totalCount;
 
   const handleLoadMore = () => onLoadMore(id, currentPage + 1);
 
@@ -26,20 +26,21 @@ const ColumnHeader = ({ column, onLoadMore }) => {
       <div className={styles.title}>
         <b>{title}</b> ({count}/{totalCount || '...'})
       </div>
-      
-        { canLoadMore && (
+
+      {canLoadMore && (
         <div className={styles.actions}>
           <IconButton aria-label="Load more" onClick={() => handleLoadMore()}>
             <SystemUpdateAltIcon fontSize="small" />
-	  </IconButton>
+          </IconButton>
         </div>
-        )}
+      )}
     </div>
   );
-};
+}
 
 ColumnHeader.propTypes = {
-  column: PropTypes.shape().isRequired,  
+  column: PropTypes.shape().isRequired,
+  onLoadMore: PropTypes.func.isRequired,
 };
 
 export default ColumnHeader;

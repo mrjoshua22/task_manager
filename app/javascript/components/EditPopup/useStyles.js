@@ -5,7 +5,7 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    outline: 0
+    outline: 0,
   },
 
   root: {

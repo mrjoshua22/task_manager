@@ -6,23 +6,23 @@ import TextField from '@material-ui/core/TextField';
 
 import useStyles from './useStyles';
 
-const Form = ({ errors, onChange, task }) => {
+function Form({ errors, onChange, task }) {
   const handleChangeTextField = (fieldName) => (event) => {
     onChange({ ...task, [fieldName]: event.target.value });
   };
-  
+
   const styles = useStyles();
 
   return (
     <form className={styles.root}>
       <TextField
         error={has('name', errors)}
-	helperText={errors.name}
-	onChange={handleChangeTextField('name')}
+        helperText={errors.name}
+        onChange={handleChangeTextField('name')}
         value={task.name}
-	label="Name"
-	required
-	margin="dense"
+        label="Name"
+        required
+        margin="dense"
       />
       <TextField
         error={has('description', errors)}
@@ -31,12 +31,12 @@ const Form = ({ errors, onChange, task }) => {
         value={task.description}
         label="Description"
         required
-	multiline
+        multiline
         margin="dense"
       />
     </form>
   );
-};
+}
 
 Form.propTypes = {
   onChange: PropTypes.func.isRequired,

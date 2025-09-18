@@ -16,7 +16,7 @@ import Form from './components/Form';
 
 import useStyles from './useStyles';
 
-const EditPopup = ({ cardId, onClose, onCardDestroy, onCardLoad, onCardUpdate }) => {
+function EditPopup({ cardId, onClose, onCardDestroy, onCardLoad, onCardUpdate }) {
   const [task, setTask] = useState(null);
   const [isSaving, setSaving] = useState(false);
   const [errors, setErrors] = useState({});
@@ -55,49 +55,46 @@ const EditPopup = ({ cardId, onClose, onCardDestroy, onCardLoad, onCardUpdate })
     <Modal className={styles.modal} open onClose={onClose}>
       <Card className={styles.root}>
         <CardHeader
-	  action={
-	    <IconButton onClick={onClose}>
-	      <CloseIcon />
-	    </IconButton>
+          action={
+            <IconButton onClick={onClose}>
+              <CloseIcon />
+            </IconButton>
           }
-	  title={isLoading ?
-		  'Your task is loading. Please be patient.' :
-		  `Task: # ${task.id} [${task.name}]`
-	  }
-	/>
-	<CardContent>
-	  {isLoading ? (
-	    <div className={styles.loader}>
-	      <CircularProgress />
-	    </div>
-	  ) : (
-	    <Form errors={errors} onChange={setTask} task={task} />
-	  )}
-	</CardContent>
-	<CardActions className={styles.actions}>
+          title={isLoading ? 'Your task is loading. Please be patient.' : `Task: # ${task.id} [${task.name}]`}
+        />
+        <CardContent>
+          {isLoading ? (
+            <div className={styles.loader}>
+              <CircularProgress />
+            </div>
+          ) : (
+            <Form errors={errors} onChange={setTask} task={task} />
+          )}
+        </CardContent>
+        <CardActions className={styles.actions}>
           <Button
-	    disabled={isLoading || isSaving}
-	    onClick={handleCardUpdate}
-	    size="small"
-	    variant="contained"
-	    color="primary"
-	  >
-	    Update
-	  </Button>
-	  <Button
-	    disabled={isLoading || isSaving}
+            disabled={isLoading || isSaving}
+            onClick={handleCardUpdate}
+            size="small"
+            variant="contained"
+            color="primary"
+          >
+            Update
+          </Button>
+          <Button
+            disabled={isLoading || isSaving}
             onClick={handleCardDestroy}
             size="small"
             variant="contained"
             color="secondary"
           >
-	    Destroy
-	  </Button>
-	</CardActions>
+            Destroy
+          </Button>
+        </CardActions>
       </Card>
     </Modal>
   );
-};
+}
 
 EditPopup.propTypes = {
   cardId: PropTypes.number.isRequired,
