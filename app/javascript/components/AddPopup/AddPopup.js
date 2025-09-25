@@ -74,17 +74,7 @@ function AddPopup({ onClose, onCardCreate }) {
               margin="dense"
             />
             <UserSelect
-              label="Author"
-              value={task.author}
-              onChange={handleChangeSelect('author')}
-              isDisabled
-              isRequired
-              error={has('author', errors)}
-              helperText={errors.author}
-            />
-            <UserSelect
               label="Assignee"
-              value={task.assignee}
               onChange={handleChangeSelect('assignee')}
               isRequired
               error={has('assignee', errors)}
