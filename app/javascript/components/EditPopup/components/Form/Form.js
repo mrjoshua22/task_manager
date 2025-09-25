@@ -45,6 +45,14 @@ function Form({ errors, onChange, task }) {
         error={has('author', errors)}
         helperText={errors.author}
       />
+      <UserSelect
+        label="Assignee"
+        value={task.assignee}
+        onChange={handleChangeSelect('assignee')}
+        isRequired
+        error={has('assignee', errors)}
+        helperText={errors.assignee}
+      />
     </form>
   );
 }
