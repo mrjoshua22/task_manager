@@ -73,7 +73,7 @@ function AddPopup({ onClose, onCardCreate }) {
               required
               margin="dense"
             />
-	    <UserSelect
+            <UserSelect
               label="Author"
               value={task.author}
               onChange={handleChangeSelect('author')}
