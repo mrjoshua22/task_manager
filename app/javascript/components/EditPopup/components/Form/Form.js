@@ -5,6 +5,9 @@ import { has } from 'ramda';
 import TextField from '@material-ui/core/TextField';
 import UserSelect from 'components/UserSelect';
 
+import TaskPresenter from 'presenters/TaskPresenter';
+import UserPresenter from 'presenters/UserPresenter';
+
 import useStyles from './useStyles';
 
 function Form({ errors, onChange, task }) {
@@ -21,7 +24,7 @@ function Form({ errors, onChange, task }) {
         error={has('name', errors)}
         helperText={errors.name}
         onChange={handleChangeTextField('name')}
-        value={task.name}
+        value={TaskPresenter.name(task)}
         label="Name"
         required
         margin="dense"
@@ -30,7 +33,7 @@ function Form({ errors, onChange, task }) {
         error={has('description', errors)}
         helperText={errors.description}
         onChange={handleChangeTextField('description')}
-        value={task.description}
+        value={TaskPresenter.description(task)}
         label="Description"
         required
         multiline
@@ -38,7 +41,7 @@ function Form({ errors, onChange, task }) {
       />
       <UserSelect
         label="Author"
-        value={task.author}
+        value={UserPresenter.fullName(task.author)}
         onChange={handleChangeSelect('author')}
         isDisabled
         isRequired
@@ -47,7 +50,7 @@ function Form({ errors, onChange, task }) {
       />
       <UserSelect
         label="Assignee"
-        value={task.assignee}
+        value={UserPresenter.fullName(task.assignee)}
         onChange={handleChangeSelect('assignee')}
         isRequired
         error={has('assignee', errors)}
@@ -59,7 +62,7 @@ function Form({ errors, onChange, task }) {
 
 Form.propTypes = {
   onChange: PropTypes.func.isRequired,
-  task: PropTypes.shape().isRequired,
+  task: TaskPresenter.shape().isRequired,
   errors: PropTypes.shape({
     name: PropTypes.arrayOf(PropTypes.string),
     description: PropTypes.arrayOf(PropTypes.string),
